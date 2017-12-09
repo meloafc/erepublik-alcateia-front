@@ -10,6 +10,6 @@ export class AppComponent {
   title = 'app';
 
   constructor(private erepublikService: ErepublikService) {
-    this.erepublikService.get();
+    // this.erepublikService.get();
   }
 }
