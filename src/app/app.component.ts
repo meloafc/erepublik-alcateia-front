@@ -1,5 +1,6 @@
-import { ErepublikService } from './services/erepublik.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +8,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
 
-  constructor(private erepublikService: ErepublikService) {
-    // this.erepublikService.get();
+  items: Observable<any[]>;
+
+  constructor(private db: AngularFireDatabase) {
+    this.items = db.list('players').valueChanges();
   }
 }

@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ErepublikService {
 
-  private path;
-  playersCollection: AngularFirestoreCollection<any>;
+  items: Observable<any[]>;
 
-  constructor(private db: AngularFirestore, private http: HttpClient) {
-    this.playersCollection = db.collection<any>('players');
+  constructor(private db: AngularFireDatabase) {
+    this.items = db.list('items').valueChanges();
   }
 
+/*
   add(player: any) {
     this.playersCollection.add(JSON.parse(JSON.stringify(player)));
   }
@@ -25,7 +26,7 @@ export class ErepublikService {
     );
   }
 
-/*
+
   update(pass: Pass) {
     const passDoc = this.afs.doc<Pass>(this.path + '/' + pass.id);
     passDoc.update(this.getCopy(pass));
