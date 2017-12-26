@@ -12,6 +12,6 @@ export class AppComponent {
   items: Observable<any[]>;
 
   constructor(private db: AngularFireDatabase) {
-    this.items = db.list('players').valueChanges();
+    // this.items = db.list('players').valueChanges();
   }
 }
