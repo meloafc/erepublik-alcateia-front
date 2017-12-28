@@ -47,11 +47,13 @@ import {
   MatTooltipModule,
   MatStepperModule,
 } from '@angular/material';
+import { DailyComponent } from './pages/daily/daily.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent
+    TestComponent,
+    DailyComponent
   ],
   imports: [
     BrowserModule,

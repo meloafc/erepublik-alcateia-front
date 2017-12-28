@@ -1,0 +1,45 @@
+<h1>{{ (team | async)?.name }}</h1>
+<h3>medalhas totais {{ (team | async)?.totalMedalsWon }}</h3>
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource" matSort matSortActive="position" matSortDirection="asc">
+
+    <ng-container matColumnDef="position">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Posição</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Data inicial</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.startDate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="initialMedals">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Medalha inicial</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.initialMedals}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Data final</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.endDate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="finalMedals">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Medalha final</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.finalMedals}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalMedalsWon">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Medalhas ganhas</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.totalMedalsWon}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</div>
