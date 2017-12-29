@@ -13,7 +13,7 @@ export class DailyComponent {
   team: Observable<any>;
   items: Observable<Element[]>;
 
-  displayedColumns = ['position', 'name', 'startDate', 'initialMedals', 'endDate', 'finalMedals', 'totalMedalsWon'];
+  displayedColumns = ['position', 'name', 'totalMedalsWon', 'initialMedals', 'finalMedals', 'startDate', 'endDate'];
   dataSource = new MatTableDataSource(new Array<Element>());
 
   @ViewChild(MatSort) sort: MatSort;

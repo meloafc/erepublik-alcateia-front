@@ -13,10 +13,10 @@
       <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
     </ng-container>
-
-    <ng-container matColumnDef="startDate">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Data inicial</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.startDate}} </mat-cell>
+    
+    <ng-container matColumnDef="totalMedalsWon">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Medalhas ganhas</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.totalMedalsWon}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="initialMedals">
@@ -24,19 +24,19 @@
       <mat-cell *matCellDef="let element"> {{element.initialMedals}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="endDate">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Data final</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.endDate}} </mat-cell>
-    </ng-container>
-
     <ng-container matColumnDef="finalMedals">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Medalha final</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.finalMedals}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="totalMedalsWon">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Medalhas ganhas</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.totalMedalsWon}} </mat-cell>
+    <ng-container matColumnDef="startDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Data inicial</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.startDate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Data final</mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.endDate}} </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
