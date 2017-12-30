@@ -1,3 +1,4 @@
+import { LoadingService } from './../../partials/loading/loading.service';
 import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -29,8 +30,9 @@ export class DailyComponent {
 
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase, private loadingService: LoadingService) {
     db.list('teams').snapshotChanges().subscribe(list => {
+      this.loadingService.colocarTelaEmEspera();
       // tslint:disable-next-line:forin
       for (const i in list) {
         const combo = {
@@ -45,6 +47,7 @@ export class DailyComponent {
   }
 
   updateView() {
+    this.loadingService.colocarTelaEmEspera();
     this.team = this.db.object('team_players_rh/' + this.teamKeySelected).valueChanges();
     this.team.subscribe(list => {
       const players: Element[] = new Array<Element>();
@@ -54,6 +57,7 @@ export class DailyComponent {
       }
       this.dataSource = new MatTableDataSource(players);
       this.dataSource.sort = this.sort;
+      this.loadingService.removerTelaEmEspera();
     });
   }
 

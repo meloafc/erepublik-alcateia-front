@@ -48,12 +48,15 @@ import {
   MatStepperModule,
 } from '@angular/material';
 import { DailyComponent } from './pages/daily/daily.component';
+import { LoadingComponent } from './partials/loading/loading.component';
+import { LoadingService } from './partials/loading/loading.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    DailyComponent
+    DailyComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
@@ -96,7 +99,8 @@ import { DailyComponent } from './pages/daily/daily.component';
     MatTooltipModule
   ],
   providers: [
-    ErepublikService
+    ErepublikService,
+    LoadingService
   ],
   bootstrap: [AppComponent]
 })
