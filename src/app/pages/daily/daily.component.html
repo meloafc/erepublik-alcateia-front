@@ -1,5 +1,12 @@
-<h1>{{ (team | async)?.name }}</h1>
-<h3>medalhas totais {{ (team | async)?.totalMedalsWon }}</h3>
+<mat-form-field>
+  <mat-select [(value)]="teamKey">
+    <mat-option *ngFor="let team of teams" [value]="team.key">
+      {{ team.value }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<p>Medalhas totais: {{ (team | async)?.totalMedalsWon }}</p>
 
 <div class="example-container mat-elevation-z8">
   <mat-table #table [dataSource]="dataSource" matSort matSortActive="position" matSortDirection="asc">
