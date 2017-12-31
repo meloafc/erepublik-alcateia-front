@@ -69,12 +69,12 @@ export class DailyComponent implements OnInit {
 
           return compareNumber(a.position.split(/[ ,]+/)[0], b.position.split(/[ ,]+/)[0], isAsc);
         }
-        case 'name': return compare(+a.name, +b.name, isAsc);
-        case 'totalMedalsWon': return compare(+a.totalMedalsWon, +b.totalMedalsWon, isAsc);
-        case 'initialMedals': return compare(+a.initialMedals, +b.initialMedals, isAsc);
-        case 'finalMedals': return compare(+a.finalMedals, +b.finalMedals, isAsc);
-        case 'startDate': return compare(+a.startDate, +b.startDate, isAsc);
-        case 'endDate': return compare(+a.endDate, +b.endDate, isAsc);
+        case 'name': return compareString(a.name, b.name, isAsc);
+        case 'totalMedalsWon': return compareNumber(a.totalMedalsWon, b.totalMedalsWon, isAsc);
+        case 'initialMedals': return compareNumber(a.initialMedals, b.initialMedals, isAsc);
+        case 'finalMedals': return compareNumber(a.finalMedals, b.finalMedals, isAsc);
+        case 'startDate': return compare(a.startDate, b.startDate, isAsc);
+        case 'endDate': return compare(a.endDate, b.endDate, isAsc);
         default: return 0;
       }
     });
@@ -108,6 +108,10 @@ export class DailyComponent implements OnInit {
 
 function compare(a, b, isAsc) {
   return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
+}
+
+function compareString(a: string, b: string, isAsc) {
+  return a.localeCompare(b) * (isAsc ? 1 : -1);
 }
 
 function compareNumber(a, b, isAsc) {
