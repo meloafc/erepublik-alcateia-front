@@ -1,5 +1,5 @@
 <mat-form-field>
-  <mat-select [(value)]="teamKey">
+  <mat-select placeholder="Projeto Alcateia" [(value)]="teamKey">
     <mat-option *ngFor="let team of teams" [value]="team.key">
       {{ team.value }}
     </mat-option>
@@ -8,45 +8,24 @@
 
 <p>Medalhas totais: {{ (team | async)?.totalMedalsWon }}</p>
 
-<div class="example-container mat-elevation-z8">
-  <mat-table #table [dataSource]="dataSource" matSort matSortActive="position" matSortDirection="asc">
+<table matSort (matSortChange)="sortData($event)">
+  <tr>
+    <th mat-sort-header="position">Posição</th>
+    <th mat-sort-header="name">Nome</th>
+    <th mat-sort-header="totalMedalsWon">Medalhas ganhas</th>
+    <th mat-sort-header="initialMedals">Medalha inicial</th>
+    <th mat-sort-header="finalMedals">Medalha final</th>
+    <th mat-sort-header="startDate">Data inicial</th>
+    <th mat-sort-header="endDate">Data final</th>
+  </tr>
 
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Posição</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Nome</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-    </ng-container>
-    
-    <ng-container matColumnDef="totalMedalsWon">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Medalhas ganhas</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.totalMedalsWon}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="initialMedals">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Medalha inicial</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.initialMedals}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="finalMedals">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Medalha final</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.finalMedals}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="startDate">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Data inicial</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.startDate}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="endDate">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Data final</mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.endDate}} </mat-cell>
-    </ng-container>
-
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
-</div>
+  <tr *ngFor="let element of sortedData">
+    <td>{{element.position}}</td>
+    <td>{{element.name}}</td>
+    <td>{{element.totalMedalsWon}}</td>
+    <td>{{element.initialMedals}}</td>
+    <td>{{element.finalMedals}}</td>
+    <td>{{element.startDate}}</td>
+    <td>{{element.endDate}}</td>
+  </tr>
+</table>
