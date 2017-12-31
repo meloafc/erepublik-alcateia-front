@@ -1,31 +1,39 @@
-<mat-form-field>
-  <mat-select placeholder="Projeto Alcateia" [(value)]="teamKey">
-    <mat-option *ngFor="let team of teams" [value]="team.key">
-      {{ team.value }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--10-col">
+  
+    <mat-form-field>
+      <mat-select placeholder="Projeto Alcateia" [(value)]="teamKey">
+        <mat-option *ngFor="let team of teams" [value]="team.key">
+          {{ team.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
 
-<p>Medalhas totais: {{ (team | async)?.totalMedalsWon }}</p>
+    <p>Medalhas totais: {{ (team | async)?.totalMedalsWon }}</p>
 
-<table matSort (matSortChange)="sortData($event)">
-  <tr>
-    <th mat-sort-header="position">Posição</th>
-    <th mat-sort-header="name">Nome</th>
-    <th mat-sort-header="totalMedalsWon">Medalhas ganhas</th>
-    <th mat-sort-header="initialMedals">Medalha inicial</th>
-    <th mat-sort-header="finalMedals">Medalha final</th>
-    <th mat-sort-header="startDate">Data inicial</th>
-    <th mat-sort-header="endDate">Data final</th>
-  </tr>
+    <table matSort (matSortChange)="sortData($event)" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+      <tr>
+        <th mat-sort-header="position">Posição</th>
+        <th mat-sort-header="name" class="mdl-data-table__cell--non-numeric">Nome</th>
+        <th mat-sort-header="totalMedalsWon">Medalhas ganhas</th>
+        <th mat-sort-header="initialMedals">Medalha inicial</th>
+        <th mat-sort-header="finalMedals">Medalha final</th>
+        <th mat-sort-header="startDate">Data inicial</th>
+        <th mat-sort-header="endDate">Data final</th>
+      </tr>
 
-  <tr *ngFor="let element of sortedData">
-    <td>{{element.position}}</td>
-    <td>{{element.name}}</td>
-    <td>{{element.totalMedalsWon}}</td>
-    <td>{{element.initialMedals}}</td>
-    <td>{{element.finalMedals}}</td>
-    <td>{{element.startDate}}</td>
-    <td>{{element.endDate}}</td>
-  </tr>
-</table>
+      <tr *ngFor="let element of sortedData">
+        <td>{{element.position}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.name}}</td>
+        <td>{{element.totalMedalsWon}}</td>
+        <td>{{element.initialMedals}}</td>
+        <td>{{element.finalMedals}}</td>
+        <td>{{element.startDate}}</td>
+        <td>{{element.endDate}}</td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="mdl-cell mdl-cell--1-col"></div>
+</div>
