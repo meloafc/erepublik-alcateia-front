@@ -3,13 +3,16 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort, Sort } from '@angular/material';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-daily',
   templateUrl: './daily.component.html',
   styleUrls: ['./daily.component.scss']
 })
-export class DailyComponent {
+export class DailyComponent implements OnInit {
+
+  @ViewChild(MatSort) sort: MatSort;
 
   teamKeySelected = '';
 
@@ -29,8 +32,7 @@ export class DailyComponent {
   sortedData;
 
   constructor(private db: AngularFireDatabase, private loadingService: LoadingService) {
-    db.list('teams').snapshotChanges().subscribe(list => {
-      this.loadingService.colocarTelaEmEspera();
+    db.list('teams', ref => ref.orderByChild('visible').equalTo(true)).snapshotChanges().subscribe(list => {
       // tslint:disable-next-line:forin
       for (const i in list) {
         const combo = {
@@ -42,6 +44,12 @@ export class DailyComponent {
       this.teamKeySelected = this.teams[this.teams.length - 1].key;
       this.updateView();
     });
+  }
+
+  ngOnInit(): void {
+    this.sort.active = 'position';
+    this.sort.direction = 'asc';
+    this.loadingService.colocarTelaEmEspera();
   }
 
   sortData(sort: Sort) {
@@ -91,6 +99,7 @@ export class DailyComponent {
         this.players.push(list.players[i]);
       }
       this.sortedData = this.players;
+      this.sortData(this.sort);
       this.loadingService.removerTelaEmEspera();
     });
   }
