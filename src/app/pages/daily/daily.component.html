@@ -12,7 +12,7 @@
 
     <p>Medalhas totais: {{ (team | async)?.totalMedalsWon }}</p>
 
-    <table matSort (matSortChange)="sortData($event)" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+    <table matSort (matSortChange)="sortData($event)" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width">
       <tr>
         <th mat-sort-header="position">Posição</th>
         <th mat-sort-header="name" class="mdl-data-table__cell--non-numeric">Nome</th>
@@ -26,11 +26,11 @@
       <tr *ngFor="let element of sortedData">
         <td>{{element.position}}</td>
         <td class="mdl-data-table__cell--non-numeric">{{element.name}}</td>
-        <td>{{element.totalMedalsWon}}</td>
-        <td>{{element.initialMedals}}</td>
-        <td>{{element.finalMedals}}</td>
-        <td>{{element.startDate}}</td>
-        <td>{{element.endDate}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.totalMedalsWon}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.initialMedals}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.finalMedals}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.startDate}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.endDate}}</td>
       </tr>
     </table>
 
