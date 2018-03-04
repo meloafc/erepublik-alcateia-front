@@ -1,3 +1,4 @@
+import { FeedbackService } from './partials/feedback/feedback.service';
 import 'hammerjs';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -50,13 +51,18 @@ import {
 import { DailyComponent } from './pages/daily/daily.component';
 import { LoadingComponent } from './partials/loading/loading.component';
 import { LoadingService } from './partials/loading/loading.service';
+import { ManualComponent } from './pages/manual/manual.component';
+import { FormsModule } from '@angular/forms';
+import { FeedbackComponent } from './partials/feedback/feedback.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     DailyComponent,
-    LoadingComponent
+    LoadingComponent,
+    ManualComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +70,7 @@ import { LoadingService } from './partials/loading/loading.service';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
     HttpClientModule,
+    FormsModule,
 
     CdkTableModule,
     MatAutocompleteModule,
@@ -100,7 +107,8 @@ import { LoadingService } from './partials/loading/loading.service';
   ],
   providers: [
     ErepublikService,
-    LoadingService
+    LoadingService,
+    FeedbackService
   ],
   bootstrap: [AppComponent]
 })
