@@ -1,8 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { FeedbackService } from './../../partials/feedback/feedback.service';
 import { Component, OnInit } from '@angular/core';
-
-import * as request from 'request';
-import * as cheerio from 'cheerio';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-manual',
@@ -15,33 +14,31 @@ export class ManualComponent implements OnInit {
   public players: string[] = [];
 
   constructor(
-    private feedbackService: FeedbackService
+    private feedbackService: FeedbackService,
+    private http: HttpClient
   ) { }
 
   ngOnInit() {
   }
 
+  getPlayer(id): Observable<any> {
+    return this.http.get<any>('http://localhost:5000/player/' + id);
+  }
+
   adicionar() {
-    const url = 'https://www.erepublik.com/br/citizen/profile/' + this.id;
-    const players = this.players;
-    const feedbackService = this.feedbackService;
-    request(url, function (error, response, body) {
-        if (!error && response.statusCode === 200) {
-            const $ = cheerio.load(body);
-
-            $('img.citizen_avatar').each(function(i, element) {
-              const player = $(this).attr('alt');
-              players.push(player);
-              feedbackService.mostrarMensagem(player + ' adicionado');
-            });
-
+    this.getPlayer(this.id).subscribe(
+      json => {
+        console.log(json);
+        if (json.name) {
+          this.players.push(json.name);
         } else {
-          if (response.statusCode === 404) {
-            feedbackService.mostrarMensagem('Jogador não encontrado');
-          }
-          console.log(error);
+          this.feedbackService.mostrarMensagem('Jogador não encontrado.');
         }
-    });
+      },
+      erro => {
+        this.feedbackService.mostrarMensagem('Ocorreu um erro ao tentar carregar jogador.');
+      }
+    );
   }
 
 }
