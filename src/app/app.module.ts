@@ -54,6 +54,7 @@ import { LoadingService } from './partials/loading/loading.service';
 import { ManualComponent } from './pages/manual/manual.component';
 import { FormsModule } from '@angular/forms';
 import { FeedbackComponent } from './partials/feedback/feedback.component';
+import { routing } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { FeedbackComponent } from './partials/feedback/feedback.component';
     FeedbackComponent
   ],
   imports: [
+    routing,
     BrowserModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
