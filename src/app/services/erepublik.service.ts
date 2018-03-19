@@ -1,45 +1,27 @@
+import { Player } from './../model/player';
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ErepublikService {
 
-  items: Observable<any[]>;
+  public URL = 'http://localhost:5000/';
 
-  constructor(private db: AngularFireDatabase) {
-    this.items = db.list('items').valueChanges();
+  constructor(private http: HttpClient) {
+
   }
 
-/*
-  add(player: any) {
-    this.playersCollection.add(JSON.parse(JSON.stringify(player)));
+  getPlayer(id): Observable<any> {
+    return this.http.get<any>(this.URL + 'player/' + id);
   }
 
-  get() {
-    this.http.get<any>('https://api.erepublik-deutschland.de/' + environment.erepublikApiKey + '/players/details/9043982').subscribe(
-      (json) => {
-        this.add(json);
-      }
-    );
+  novoTime(name): Observable<any> {
+    return this.http.post(this.URL + 'team', { name: name});
   }
 
-
-  update(pass: Pass) {
-    const passDoc = this.afs.doc<Pass>(this.path + '/' + pass.id);
-    passDoc.update(this.getCopy(pass));
+  adicionarJogadores(timeId, jogadores: Player[]): Observable<any> {
+    return this.http.post(this.URL + 'team/players', { timeId: timeId, listaJogadores: jogadores});
   }
-
-  delete(pass: Pass) {
-    const passDoc = this.afs.doc<Pass>(this.path + '/' + pass.id);
-    passDoc.delete();
-  }
-
-  getCopy(pass: Pass): Pass {
-    return <Pass> JSON.parse(JSON.stringify(pass));
-  }
-*/
 
 }

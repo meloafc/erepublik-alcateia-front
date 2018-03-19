@@ -1,11 +1,12 @@
-<h1>Equipe 1</h1>
+<h3>Equipe</h3>
 
-equipe criada 1 hora atrás
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  <input [(ngModel)]="nomeEquipe" class="mdl-textfield__input" type="text" id="nomeEquipe">
+  <label class="mdl-textfield__label" for="nomeEquipe">Nome da equipe</label>
+  <span class="mdl-textfield__error"></span>
+</div>
 
-<label class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-1">
-  <input type="checkbox" id="switch-1" class="mdl-switch__input">
-  <span class="mdl-switch__label">Vísivel para o público geral</span>
-</label>
+<br>
 
 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
   <input [(ngModel)]="id" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
@@ -17,30 +18,18 @@ equipe criada 1 hora atrás
   Adicionar
 </button>
 
-<h2>Jogadores</h2>
+<h3>Jogadores</h3>
 quantidade: {{ players.length }}
 
 <ul class="demo-list-item mdl-list">
   <li *ngFor="let i of players" class="mdl-list__item">
     <span class="mdl-list__item-primary-content">
-      {{ i }}
+      {{ i.name }}
     </span>
-    <a class="mdl-list__item-secondary-action" href="#"><i class="material-icons">delete</i></a>
+    <a (click)="remover(i)" class="mdl-list__item-secondary-action"><i class="material-icons">delete</i></a>
   </li>
 </ul>
 
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" disabled>
-  Iniciar Contagem
-</button>
-
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-  Atualizar Contagem
-</button>
-
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-  Finalizar Contagem
-</button>
-
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-  Deletar Equipe
+<button (click)="criarEquipe()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+  Criar Equipe
 </button>
