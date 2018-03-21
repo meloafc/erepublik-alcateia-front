@@ -56,6 +56,7 @@ import { FormsModule } from '@angular/forms';
 import { FeedbackComponent } from './partials/feedback/feedback.component';
 import { routing } from './app.routes';
 import { ActiveTeamComponent } from './pages/active-team/active-team.component';
+import { MdlUpgradeDirective } from './directives/mdl-upgrade.directive';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { ActiveTeamComponent } from './pages/active-team/active-team.component';
     LoadingComponent,
     ManualComponent,
     FeedbackComponent,
-    ActiveTeamComponent
+    ActiveTeamComponent,
+    MdlUpgradeDirective
   ],
   imports: [
     routing,
