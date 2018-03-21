@@ -1,10 +1,10 @@
 export class PlayerHistory {
-    endTime: number;
+    endTime: string;
     finalMedals: number;
     id: string;
     initialMedals: number;
     name: string;
     position: string;
-    startTime: number;
+    startTime: string;
     totalMedalsWon: number;
 }

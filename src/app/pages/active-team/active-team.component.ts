@@ -6,6 +6,8 @@ import { ErepublikService } from './../../services/erepublik.service';
 import { LoadingService } from './../../partials/loading/loading.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
+import * as moment from 'moment';
+
 @Component({
   selector: 'app-active-team',
   templateUrl: './active-team.component.html',
@@ -15,6 +17,8 @@ export class ActiveTeamComponent implements OnInit {
 
   @ViewChild(MatSort) sort: MatSort;
 
+  public dataInicial;
+  public ultimaAtualizacao;
   public teamHistory: TeamHistory;
   sortedData;
 
@@ -47,6 +51,9 @@ export class ActiveTeamComponent implements OnInit {
     // tslint:disable-next-line:forin
     for (const i in json.players) {
       const player: PlayerHistory = json.players[i];
+      player.startTime = moment(player.startTime).format('DD/MM/YYYY HH:mm:ss');
+      player.endTime = moment(player.endTime).format('DD/MM/YYYY HH:mm:ss');
+
       players.push(player);
     }
 
@@ -56,6 +63,9 @@ export class ActiveTeamComponent implements OnInit {
     this.teamHistory.players = players;
     this.teamHistory.startTime = json.startTime;
     this.teamHistory.totalMedalsWon = json.totalMedalsWon;
+
+    this.dataInicial = moment(json.startTime).format('DD/MM/YYYY HH:mm:ss');
+    this.ultimaAtualizacao = moment(json.endTime).format('DD/MM/YYYY HH:mm:ss');
   }
 
   sortData(sort: Sort) {

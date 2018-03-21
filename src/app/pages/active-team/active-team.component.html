@@ -2,6 +2,8 @@
   <div class="mdl-cell mdl-cell--1-col"></div>
   <div class="mdl-cell mdl-cell--10-col">
 
+    <p>Data inicial: {{ dataInicial }}</p>
+    <p>Última atualização: {{ ultimaAtualizacao }}</p>
     <p>Medalhas totais: {{ teamHistory?.totalMedalsWon }}</p>
 
     <table matSort (matSortChange)="sortData($event)" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width">
