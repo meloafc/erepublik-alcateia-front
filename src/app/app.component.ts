@@ -27,6 +27,11 @@ export class AppComponent implements AfterViewInit {
     this.alternarStatusMenuLateral();
   }
 
+  navegarParaTabelaAntiga() {
+    this.router.navigate(['/daily']);
+    this.alternarStatusMenuLateral();
+  }
+
   alternarStatusMenuLateral() {
     this.menuLateral.MaterialLayout.toggleDrawer();
   }

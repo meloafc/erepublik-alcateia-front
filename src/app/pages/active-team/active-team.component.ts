@@ -56,8 +56,6 @@ export class ActiveTeamComponent implements OnInit {
     this.teamHistory.players = players;
     this.teamHistory.startTime = json.startTime;
     this.teamHistory.totalMedalsWon = json.totalMedalsWon;
-
-    console.log(this.teamHistory);
   }
 
   sortData(sort: Sort) {

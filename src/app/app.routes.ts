@@ -4,8 +4,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { DailyComponent } from './pages/daily/daily.component';
 
 export const routes: Routes = [
-    { path: '', component: DailyComponent },
+    { path: '', component: ActiveTeamComponent },
     { path: 'active-team', component: ActiveTeamComponent },
+    { path: 'daily', component: DailyComponent },
     { path: 'manual', component: ManualComponent },
     { path: '**', redirectTo: '' }
 ];
