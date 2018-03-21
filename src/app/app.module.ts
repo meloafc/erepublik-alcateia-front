@@ -55,6 +55,7 @@ import { ManualComponent } from './pages/manual/manual.component';
 import { FormsModule } from '@angular/forms';
 import { FeedbackComponent } from './partials/feedback/feedback.component';
 import { routing } from './app.routes';
+import { ActiveTeamComponent } from './pages/active-team/active-team.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { routing } from './app.routes';
     DailyComponent,
     LoadingComponent,
     ManualComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    ActiveTeamComponent
   ],
   imports: [
     routing,

@@ -1,0 +1,31 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--1-col"></div>
+  <div class="mdl-cell mdl-cell--10-col">
+
+    <p>Medalhas totais: {{ teamHistory?.totalMedalsWon }}</p>
+
+    <table matSort (matSortChange)="sortData($event)" class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width">
+      <tr>
+        <th mat-sort-header="position">Posição</th>
+        <th mat-sort-header="name" class="mdl-data-table__cell--non-numeric">Nome</th>
+        <th mat-sort-header="totalMedalsWon">Medalhas ganhas</th>
+        <th mat-sort-header="initialMedals">Medalha inicial</th>
+        <th mat-sort-header="finalMedals">Medalha final</th>
+        <th mat-sort-header="startDate">Data inicial</th>
+        <th mat-sort-header="endDate">Data final</th>
+      </tr>
+
+      <tr *ngFor="let element of sortedData">
+        <td>{{element.position}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.name}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.totalMedalsWon}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.initialMedals}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.finalMedals}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.startTime}}</td>
+        <td class="mdl-data-table__cell--non-numeric">{{element.endTime}}</td>
+      </tr>
+    </table>
+
+  </div>
+  <div class="mdl-cell mdl-cell--1-col"></div>
+</div>

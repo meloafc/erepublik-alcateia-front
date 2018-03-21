@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatSort } from '@angular/material';
 
-import * as request from 'request';
-import * as cheerio from 'cheerio';
-
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -12,6 +9,7 @@ import * as cheerio from 'cheerio';
 export class TestComponent implements OnInit {
 
   ngOnInit(): void {
+    /*
     request('https://www.erepublik.com/br/citizen/profile/4032742', function (error, response, body) {
         console.log('https://www.erepublik.com/br/citizen/profile/4032742');
         if (!error && response.statusCode === 200) {
@@ -31,6 +29,6 @@ export class TestComponent implements OnInit {
             console.log(error);
         }
     });
+    */
   }
 }
-

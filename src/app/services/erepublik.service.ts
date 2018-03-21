@@ -24,4 +24,8 @@ export class ErepublikService {
     return this.http.post(this.URL + 'team/players', { timeId: timeId, listaJogadores: jogadores});
   }
 
+  getTimeAtivo(): Observable<any> {
+    return this.http.get<any>(this.URL + 'teamHistory');
+  }
+
 }
