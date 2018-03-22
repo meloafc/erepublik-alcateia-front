@@ -57,6 +57,7 @@ import { FeedbackComponent } from './partials/feedback/feedback.component';
 import { routing } from './app.routes';
 import { ActiveTeamComponent } from './pages/active-team/active-team.component';
 import { MdlUpgradeDirective } from './directives/mdl-upgrade.directive';
+import { FooterComponent } from './partials/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { MdlUpgradeDirective } from './directives/mdl-upgrade.directive';
     ManualComponent,
     FeedbackComponent,
     ActiveTeamComponent,
-    MdlUpgradeDirective
+    MdlUpgradeDirective,
+    FooterComponent
   ],
   imports: [
     routing,

@@ -69,6 +69,10 @@ export class ActiveTeamComponent implements OnInit {
   }
 
   sortData(sort: Sort) {
+    if (!this.teamHistory) {
+      return;
+    }
+
     const data = this.teamHistory.players;
     if (!sort.active || sort.direction === '') {
       this.sortedData = data;

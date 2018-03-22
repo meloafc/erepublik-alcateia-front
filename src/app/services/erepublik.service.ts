@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ErepublikService {
 
-  public URL = 'http://localhost:5000/';
+  public URL = 'http://erepublik-server.herokuapp.com/';
 
   constructor(private http: HttpClient) {
 
