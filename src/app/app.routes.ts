@@ -9,7 +9,7 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'active-team', component: ActiveTeamComponent },
     { path: 'daily', component: DailyComponent },
-    { path: 'manual', component: ManualComponent },
+    { path: 'team/detail', component: ManualComponent },
     { path: '**', redirectTo: '' }
 ];
 

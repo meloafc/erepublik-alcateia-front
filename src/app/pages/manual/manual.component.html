@@ -1,35 +1,47 @@
-<h3>Equipe</h3>
+<div class="demo-container mdl-grid">
+  <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+  <div class="demo-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--8-col">
 
-<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-  <input [(ngModel)]="nomeEquipe" class="mdl-textfield__input" type="text" id="nomeEquipe">
-  <label class="mdl-textfield__label" for="nomeEquipe">Nome da equipe</label>
-  <span class="mdl-textfield__error"></span>
+    <h3>Equipe</h3>
+    <span class="mdl-color-text--grey-500">Criada 31/03/2018 16:31:09</span>
+
+    <br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input [(ngModel)]="nomeEquipe" class="mdl-textfield__input" type="text" id="nomeEquipe">
+      <label class="mdl-textfield__label" for="nomeEquipe">Nome da equipe</label>
+      <span class="mdl-textfield__error"></span>
+    </div>
+
+    <br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <input [(ngModel)]="id" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
+      <label class="mdl-textfield__label" for="sample2">ID do jogador</label>
+      <span class="mdl-textfield__error">Digite apenas números!</span>
+    </div>
+
+    <button (click)="adicionar()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+      Adicionar
+    </button>
+
+    <h3>Jogadores</h3>
+    <span class="mdl-color-text--grey-500">Quantidade de jogadores: {{ players.length }}</span>
+
+    <ul class="demo-list-item mdl-list">
+      <li *ngFor="let i of players" class="mdl-list__item">
+        <span class="mdl-list__item-primary-content">
+          {{ i.name }}
+        </span>
+        <a (click)="remover(i)" class="mdl-list__item-secondary-action">
+          <i class="material-icons">delete</i>
+        </a>
+      </li>
+    </ul>
+
+    <button (click)="criarEquipe()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+      Criar Equipe
+    </button>
+
+  </div>
 </div>
-
-<br>
-
-<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-  <input [(ngModel)]="id" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample2">
-  <label class="mdl-textfield__label" for="sample2">ID do jogador</label>
-  <span class="mdl-textfield__error">Digite apenas números!</span>
-</div>
-
-<button (click)="adicionar()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-  Adicionar
-</button>
-
-<h3>Jogadores</h3>
-quantidade: {{ players.length }}
-
-<ul class="demo-list-item mdl-list">
-  <li *ngFor="let i of players" class="mdl-list__item">
-    <span class="mdl-list__item-primary-content">
-      {{ i.name }}
-    </span>
-    <a (click)="remover(i)" class="mdl-list__item-secondary-action"><i class="material-icons">delete</i></a>
-  </li>
-</ul>
-
-<button (click)="criarEquipe()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
-  Criar Equipe
-</button>
