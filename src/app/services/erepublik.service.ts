@@ -2,6 +2,7 @@ import { Player } from './../model/player';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { Team } from '../model/team';
 
 @Injectable()
 export class ErepublikService {
@@ -14,6 +15,10 @@ export class ErepublikService {
 
   getPlayer(id): Observable<any> {
     return this.http.get<any>(this.URL + 'player/' + id);
+  }
+
+  getListaTimes(): Observable<Team[]> {
+    return this.http.get<Team[]>(this.URL + 'team/list');
   }
 
   novoTime(name): Observable<any> {

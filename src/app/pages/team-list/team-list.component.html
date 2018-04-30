@@ -9,27 +9,11 @@
       </button>
   
       <ul class="demo-list-item mdl-list">
-        <li class="mdl-list__item">
+        <li *ngFor="let i of teams" class="mdl-list__item">
           <span class="mdl-list__item-primary-content">
-            equipe 1
+            {{ i.name }}
           </span>
-          <a class="mdl-list__item-secondary-action">
-            <i class="material-icons">mode_edit</i>
-          </a>
-        </li>
-        <li class="mdl-list__item">
-          <span class="mdl-list__item-primary-content">
-            equipe 2
-          </span>
-          <a class="mdl-list__item-secondary-action">
-            <i class="material-icons">mode_edit</i>
-          </a>
-        </li>
-        <li class="mdl-list__item">
-          <span class="mdl-list__item-primary-content">
-            equipe 3
-          </span>
-          <a class="mdl-list__item-secondary-action">
+          <a (click)="editar(i)" class="mdl-list__item-secondary-action">
             <i class="material-icons">mode_edit</i>
           </a>
         </li>
